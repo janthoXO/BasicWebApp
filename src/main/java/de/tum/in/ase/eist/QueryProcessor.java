@@ -21,7 +21,7 @@ public class QueryProcessor {
             return String.valueOf(Integer.parseInt(arr[0].replaceAll("[^\\d.]", "").strip())
                     + Integer.parseInt(arr[1].replaceAll("[^\\d.]", "").strip()));
         } else if (query.contains("which of the following")) {
-            String[] arr = query.split("largest");
+            String[] arr = query.split("largest:");
             return Arrays.stream(arr[1].split(","))
                     .map(i -> Integer.parseInt(i.replaceAll("[^\\d.]", "").strip()))
                     .max(Integer::compareTo).toString();
