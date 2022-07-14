@@ -18,11 +18,11 @@ public class QueryProcessor {
             return "MyTeam";
         } else if (query.contains("what is")) { // TODO extend the programm here
             String[] arr = query.split(" ");
-            return String.valueOf(Integer.parseInt(arr[2]) + Integer.parseInt(arr[4]));
+            return String.valueOf(Integer.parseInt(arr[2].strip()) + Integer.parseInt(arr[4].strip()));
         } else if (query.contains("which of the following")) {
             String[] arr = query.split(":");
             return Arrays.stream(arr[1].split(","))
-                    .map(i -> Integer.parseInt(i))
+                    .map(i -> Integer.parseInt(i.strip()))
                     .max(Integer::compareTo).toString();
         } else {
             return "";
