@@ -15,7 +15,6 @@ public class QueryProcessor {
 
     public String process(String query) {
         query = query.toLowerCase();
-        logger.info(query);
         String res;
         if (query.contains("shakespeare")) {
             res = "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -37,7 +36,7 @@ public class QueryProcessor {
         } else {
             res = "";
         }
-        logger.info("Ergebnis " + res);
+        logger.info("Query" + query + " Ergebnis " + res);
         return res;
     }
 }
