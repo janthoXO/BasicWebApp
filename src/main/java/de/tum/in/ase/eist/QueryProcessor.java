@@ -32,7 +32,7 @@ public class QueryProcessor {
             String[] arr = query.split("largest:");
             return Arrays.stream(arr[1].split(","))
                     .map(i -> Integer.parseInt(i.replaceAll("[^\\d.]", "").strip()))
-                    .max(Integer::compareTo).toString();
+                    .max(Integer::compareTo).get().toString();
         } else {
             return "";
         }
