@@ -17,9 +17,11 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
             return "MyTeam";
         } else if (query.contains("what is")) { // TODO extend the programm here
-            String[] arr = query.split("plus");
-            return String.valueOf(Integer.parseInt(arr[0].replaceAll("[^\\d.]", "").strip())
-                    + Integer.parseInt(arr[1].replaceAll("[^\\d.]", "").strip()));
+            String[] arr = query.split(" ");
+            return String.valueOf(
+                    Integer.parseInt(arr[arr.length - 3].replaceAll("[^\\d.]", "").strip())
+                            + Integer.parseInt(arr[arr.length - 1].replaceAll("[^\\d.]", "").strip())
+            );
         } else if (query.contains("which of the following")) {
             String[] arr = query.split("largest:");
             return Arrays.stream(arr[1].split(","))
