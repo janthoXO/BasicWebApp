@@ -2,6 +2,9 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 @Service
 public class QueryProcessor {
 
@@ -12,8 +15,16 @@ public class QueryProcessor {
                     "English poet, playwright, and actor, widely regarded as the greatest " +
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
-           return "MyTeam";
-        } else { // TODO extend the programm here
+            return "MyTeam";
+        } else if (query.contains("what is")) { // TODO extend the programm here
+            String[] arr = query.split(" ");
+            return String.valueOf(Integer.parseInt(arr[2]) + Integer.parseInt(arr[4]));
+        } else if (query.contains("which of the following")) {
+            String[] arr = query.split(":");
+            return Arrays.stream(arr[1].split(","))
+                    .map(i -> Integer.parseInt(i))
+                    .max(Integer::compareTo).toString();
+        } else {
             return "";
         }
     }
